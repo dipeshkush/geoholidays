@@ -13,7 +13,7 @@ export default function Hero() {
 
             <div
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('/hero.webp')" }}
+                style={{ backgroundImage: "url('/Hero.webp')" }}
             />
 
             {/* Softer Overlay */}
