@@ -8,7 +8,7 @@ const lato = Lato({
 });
 
 export const metadata = {
-  title: "GeoHolidays - Premium Travel Experiences",
+  title: "GeoHolidays",
   description: "Premium travel experiences curated for discerning travelers",
 };
 

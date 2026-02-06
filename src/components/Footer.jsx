@@ -37,10 +37,10 @@ export default function Footer() {
               Crafting unforgettable journeys with care and precision — your trusted partner for every destination.
             </p>
             <div className="flex items-center gap-5">
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+              <Link href="https://www.facebook.com/geo.holiday.2025/?rdid=4fVpcg6TBWt9VNaK" className="text-gray-300 hover:text-white transition-colors">
                 <FaFacebookF size={20} />
               </Link>
-              <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+              <Link href="https://www.instagram.com/geoholidays_?igsh=MTE1MXluNzV3aHF6Zw%3D%3D" className="text-gray-300 hover:text-white transition-colors">
                 <FaInstagram size={20} />
               </Link>
               <Link href="#" className="text-gray-300 hover:text-white transition-colors">
@@ -52,41 +52,38 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2 - Quick Links + Other Links */}
+          {/* Column 2 - Quick Links */}
           <div className="space-y-6">
-            <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-              <ul className="space-y-3">
-                <li><Link href="#hero" className="hover:text-white transition-colors">Home</Link></li>
-                <li><Link href="#about" className="hover:text-white transition-colors">About Us</Link></li>
-                <li><Link href="#services" className="hover:text-white transition-colors">Services</Link></li>
-                <li><Link href="#contact" className="hover:text-white transition-colors">Contact</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="space-y-6">
-             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Other Links</h4>
-              <ul className="space-y-3">
-                <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
-                <li><Link href="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link></li>
-              </ul>
-            </div>
+            <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+            <ul className="space-y-3">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li><Link href="/#about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/#services" className="hover:text-white transition-colors">Services</Link></li>
+              <li><Link href="/contact-us" className="hover:text-white transition-colors">Contact</Link></li>
+            </ul>
           </div>
 
-          {/* Column 3 - Contact */}
+          {/* Column 3 - Other Links */}
+          <div className="space-y-6">
+            <h4 className="text-lg font-semibold text-white">Other Links</h4>
+            <ul className="space-y-3">
+              <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
+              <li><Link href="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4 - Contact */}
           <div className="space-y-6">
             <h4 className="text-lg font-semibold text-white">Get in Touch</h4>
             <ul className="space-y-5">
-
               <li className="flex items-center gap-3">
                 <FaPhoneAlt className="text-white flex-shrink-0" size={20} />
                 <span>+91 78801 70012</span>
               </li>
               <li className="flex items-center gap-3">
                 <FaEnvelope className="text-white flex-shrink-0" size={20} />
-                <span> info@geoholidays.in</span>
+                <span>info@geoholidays.in</span>
               </li>
             </ul>
           </div>
@@ -96,9 +93,11 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="relative z-20 border-t border-gray-800 bg-black/60 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-400">
-          <p className="text-center sm:text-right mt-2 sm:mt-0">© {new Date().getFullYear()} GEOHOLIDAYS. ALL RIGHTS RESERVED.</p>
+          <p className="text-center sm:text-right mt-2 sm:mt-0">
+            © {new Date().getFullYear()} GEOHOLIDAYS. ALL RIGHTS RESERVED.
+          </p>
 
-         <p className="text-center sm:text-right mt-2 sm:mt-0">
+          <p className="text-center sm:text-right mt-2 sm:mt-0">
             DESIGNED BY &nbsp;
             <a
               href="https://webseeder.in"

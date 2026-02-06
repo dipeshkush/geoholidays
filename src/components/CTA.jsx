@@ -39,7 +39,7 @@ export default function CTA() {
           {/* RIGHT — 1 part */}
           <div className="md:col-span-1 md:text-right">
             <Link
-              href="#contact"
+              href="/contact-us"
               className="inline-block bg-white/10 hover:bg-white/20
                          text-white font-semibold
                          px-8 py-4 rounded-xl

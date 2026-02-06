@@ -57,7 +57,7 @@ export default function Hero() {
 
                     {/* Contact Button */}
                     <Link
-                        href="#contact"
+                        href="/contact-us"
                         className="group relative overflow-hidden
                        border border-white/40
                        px-7 py-3 rounded-md

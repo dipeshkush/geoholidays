@@ -144,7 +144,7 @@ export default function FAQSection() {
                     <p className="text-gray-600">
                         Still have questions?{" "}
                         <a
-                            href="#contact"
+                            href="/contact-us"
                             className="text-indigo-600 font-medium hover:underline"
                         >
                             Contact our team

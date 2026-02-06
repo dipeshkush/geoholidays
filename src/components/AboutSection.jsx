@@ -108,7 +108,7 @@ export default function AboutStorySection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.9 }}
-                    className="relative mt-16"
+                    className="relative md:mt-16"
                 >
                     <div className="rounded-xl overflow-hidden shadow-xl">
                         <Image
