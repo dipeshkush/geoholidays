@@ -10,14 +10,12 @@ export default function Header() {
   const [active, setActive] = useState("#hero");
   const menuRef = useRef(null);
 
-  // Only these sections have underline in nav
   const navSections = ["#hero", "#about", "#services", "#team"];
-  // We also track #contact but don't show underline for it in nav
   const allSections = [...navSections, "#contact"];
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150; // header height + buffer
+      const scrollPosition = window.scrollY + 150; 
 
       let current = "#hero";
 

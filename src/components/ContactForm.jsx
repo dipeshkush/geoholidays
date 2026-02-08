@@ -12,10 +12,9 @@ export default function ContactSection({ showHeader = true }) {
     setStatus("Sending...");
 
     const formData = new FormData(e.target);
-
     try {
       const res = await fetch(
-        "https://formsubmit.co/ajax/info@geoholidays.in",
+         "https://formsubmit.co/ajax/info@geoholidays.in",
         {
           method: "POST",
           body: formData,
