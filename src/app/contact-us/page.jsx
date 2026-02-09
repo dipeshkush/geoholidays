@@ -7,7 +7,7 @@ import ContactForm from "@/components/ContactForm";
 
 export default function ContactUsPage() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-50">
       <Header />
 
       <div className="pt-12">

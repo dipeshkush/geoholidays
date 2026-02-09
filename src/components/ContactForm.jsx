@@ -12,190 +12,246 @@ export default function ContactSection({ showHeader = true }) {
     setStatus("Sending...");
 
     const formData = new FormData(e.target);
+
     try {
-      const res = await fetch(
-         "https://formsubmit.co/ajax/info@geoholidays.in",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const res = await fetch("https://formsubmit.co/ajax/info@geoholidays.in", {
+        method: "POST",
+        body: formData,
+      });
 
       if (res.ok) {
-        setStatus("Message sent successfully!");
+        setStatus("Thank you! Your message has been sent successfully.");
         e.target.reset();
       } else {
-        setStatus("Failed to send message");
+        setStatus("Something went wrong. Please try again.");
       }
     } catch (err) {
-      setStatus("Failed to send message");
+      setStatus("Failed to send message. Please check your connection.");
     }
   };
 
   return (
-    <section className="bg-[#f5f5f7] py-12 scroll-mt-20" id="contact">
-      <div className="max-w-7xl mx-auto px-6">
-
-        {/* Top Heading */}
+    <section id="contact" className="py-16 bg-gray-50 scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
+        {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-5xl font-light text-gray-700 mt-6">
-            Get in Touch with{" "}
-            <span className="text-[#ff7a00] font-semibold">
-              GeoHolidays
+          <h2 className="text-5xl font-light text-gray-900">
+            Let's Start Your{" "}
+            <span className="text-blue-900 font-semibold">
+              Journey
             </span>
           </h2>
 
-          <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
-            Ready to embark on your GeoHolidays luxury travel experience?
-            Contact us today and let us create unforgettable memories for you.
+          <p className="mt-5 text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Ready to plan your next unforgettable journey with GeoHolidays?
+            Have questions or want to customize your trip?
+            We're here to help — reach out today!
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-14">
-
-          {/* LEFT — Contact Information */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* LEFT - Contact Information */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
+            transition={{ duration: 0.8 }}
           >
-            <h3 className="text-3xl font-serif text-gray-900 mb-8">
-              Contact Information
-            </h3>
+            {/* LEFT - Contact Information */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="space-y-10">
+                {/* Phone, Email */}
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#0b1f3a]/10 flex items-center justify-center flex-shrink-0">
+                      <FaPhoneAlt className="text-[#0b1f3a] text-xl" />
+                    </div>
+                    <div>
+                      <p className="text-gray-900 font-medium">Phone</p>
+                      <a
+                        href="tel:+917880170012"
+                        className="text-gray-700 hover:text-[#0b1f3a] transition-colors"
+                      >
+                        +91 78801 70012
+                      </a>
+                    </div>
+                  </div>
 
-            <div className="space-y-6">
-
-              {/* Phone */}
-              <div className="flex items-center gap-5 border border-gray-200 bg-white p-6 rounded-md">
-                <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center">
-                  <FaPhoneAlt className="text-gray-700" />
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#0b1f3a]/10 flex items-center justify-center flex-shrink-0">
+                      <FaEnvelope className="text-[#0b1f3a] text-xl" />
+                    </div>
+                    <div>
+                      <p className="text-gray-900 font-medium">Email</p>
+                      <a
+                        href="mailto:info@geoholidays.in"
+                        className="text-gray-700 hover:text-[#0b1f3a] transition-colors"
+                      >
+                        info@geoholidays.in
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-medium text-gray-900">Phone</p>
-                  <p className="text-gray-600 mt-1">
-                    +91 78801 70012
-                  </p>
+
+                {/* Address + Office Timings */}
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#0b1f3a]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaMapMarkerAlt className="text-[#0b1f3a] text-xl" />
+                    </div>
+                    <div>
+                      <p className="text-gray-900 font-medium mb-1">Office Address:</p>
+                      <p className="text-gray-600 leading-relaxed">
+                        Office No 34, Maple High Street,<br />
+                        Narmadapuram Rd, in front of Aashima Mall,<br />
+                        Danish Nagar, Bagmugaliya,<br />
+                        Bhopal, Madhya Pradesh 462042
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Office Timings */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#0b1f3a]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <svg
+                        className="text-[#0b1f3a] text-xl"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.5}
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-gray-900 font-medium mb-1">Office Hours:</p>
+                      <p className="text-gray-600 leading-relaxed">
+                        Monday – Saturday: <span className="font-medium">10:00 AM – 6:00 PM</span><br />
+                        Sunday: <span className="font-medium">Closed</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              {/* Email */}
-              <div className="flex items-center gap-5 border border-gray-200 bg-white p-6 rounded-md">
-                <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center">
-                  <FaEnvelope className="text-gray-700" />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900">Email</p>
-                  <p className="text-gray-600 mt-1">
-                    info@geoholidays.in
-                  </p>
-                </div>
-              </div>
-
-              {/* Location */}
-              <div className="flex items-start gap-5 border border-gray-200 bg-white p-6 rounded-md">
-                <div className="w-14 h-14 min-w-[56px] rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
-                  <FaMapMarkerAlt className="text-gray-700" />
-                </div>
-
-                <div>
-                  <p className="font-medium text-gray-900">
-                    Location
-                  </p>
-                  <p className="text-gray-600 mt-1 leading-relaxed">
-                    Office No 34, Maple High Street,<br />
-                    Narmadapuram Rd, in front of Aashima Mall,<br />
-                    Danish Nagar, Bagmugaliya, Bhopal,<br />
-                    Madhya Pradesh 462042
-                  </p>
-                </div>
-              </div>
-
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* RIGHT — Form */}
+          {/* RIGHT - Form */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
-            className="bg-white border border-gray-200 rounded-xl p-10"
+            transition={{ duration: 0.8 }}
           >
-            <h3 className="text-3xl font-serif text-gray-900 mb-8">
-              Send us a Message
-            </h3>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-
-              {/* hidden config */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Hidden fields */}
               <input type="hidden" name="_subject" value="New Contact — GeoHolidays Website" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_captcha" value="false" />
 
               <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    First Name *
+                  </label>
+                  <input
+                    name="First Name"
+                    required
+                    placeholder="Enter your first name"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#0b1f3a] focus:ring-2 focus:ring-[#0b1f3a]/20 outline-none transition-all"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Last Name *
+                  </label>
+                  <input
+                    name="Last Name"
+                    required
+                    placeholder="Enter your last name"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#0b1f3a] focus:ring-2 focus:ring-[#0b1f3a]/20 outline-none transition-all"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  Email *
+                </label>
                 <input
-                  name="First Name"
+                  type="email"
+                  name="Email"
                   required
-                  placeholder="Your First Name"
-                  className="border border-gray-300 rounded-md px-4 py-3 outline-none focus:ring-2 focus:ring-gray-400"
-                />
-                <input
-                  name="Last Name"
-                  required
-                  placeholder="Your Last Name"
-                  className="border border-gray-300 rounded-md px-4 py-3 outline-none focus:ring-2 focus:ring-gray-400"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#0b1f3a] focus:ring-2 focus:ring-[#0b1f3a]/20 outline-none transition-all"
                 />
               </div>
 
-              <input
-                type="email"
-                name="Email"
-                required
-                placeholder="your.email@example.com"
-                className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:ring-2 focus:ring-gray-400"
-              />
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  Phone Number
+                </label>
+                <input
+                  name="Phone"
+                  placeholder="Enter your phone number"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#0b1f3a] focus:ring-2 focus:ring-[#0b1f3a]/20 outline-none transition-all"
+                />
+              </div>
 
-              <input
-                name="Phone"
-                placeholder="Phone"
-                className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:ring-2 focus:ring-gray-400"
-              />
-
-              <textarea
-                name="Message"
-                rows={2}
-                required
-                placeholder="Your Message"
-                className="w-full border border-gray-300 rounded-md px-4 py-3 outline-none focus:ring-2 focus:ring-gray-400 resize-none"
-              />
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  Message *
+                </label>
+                <textarea
+                  name="Message"
+                  rows={2}
+                  required
+                  placeholder="Type your message"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#0b1f3a] focus:ring-2 focus:ring-[#0b1f3a]/20 outline-none transition-all resize-y min-h-[60px]"
+                />
+              </div>
 
               <button
+                type="submit"
                 disabled={status === "Sending..."}
-                className="w-full bg-gray-900 hover:bg-black text-white py-4 rounded-md font-medium transition disabled:opacity-60"
+                className={`
+                  w-full py-4 px-8 rounded-lg font-medium text-white transition-all duration-300
+                  ${status === "Sending..."
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-[#0b1f3a] hover:bg-[#0a1729] shadow-md hover:shadow-lg"
+                  }
+                `}
               >
-                {status === "Sending..." ? "Sending..." : "Send Message"}
+                {status === "Sending..." ? "Sending..." : "Submit"}
               </button>
 
-              {/* Status message */}
               {status && status !== "Sending..." && (
-                <p className={`text-center font-medium ${
-                  status.includes("success")
-                    ? "text-green-600"
-                    : "text-red-600"
-                }`}>
+                <p
+                  className={`text-center font-medium mt-4 ${status.includes("Thank you") ? "text-green-600" : "text-red-600"
+                    }`}
+                >
                   {status}
                 </p>
               )}
-
             </form>
           </motion.div>
-
         </div>
       </div>
     </section>

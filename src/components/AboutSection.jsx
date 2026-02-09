@@ -99,10 +99,7 @@ export default function AboutStorySection() {
                         </div>
 
                     </motion.div>
-
                 </motion.div>
-
-                {/* RIGHT IMAGE */}
                 <motion.div
                     initial={{ opacity: 0, x: 60 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -110,17 +107,15 @@ export default function AboutStorySection() {
                     transition={{ duration: 0.9 }}
                     className="relative md:mt-16"
                 >
-                    <div className="rounded-xl overflow-hidden shadow-xl">
-                        <Image
+                    <div className="rounded-lg overflow-hidden shadow-xl">
+                        <img
                             src="/about1.webp"
                             alt="Travel Marina"
-                            width={500}
-                            height={700}
-                            className="object-top w-full h-[260px] sm:h-[360px] md:h-[500px]"
+                            className="block w-full h-auto"
+                            loading="lazy"
                         />
                     </div>
                 </motion.div>
-
 
             </div>
         </section>

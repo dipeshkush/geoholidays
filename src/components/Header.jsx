@@ -3,44 +3,56 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 
 export default function Header() {
+  const pathname = usePathname();
+
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("#hero");
+  const [active, setActive] = useState(null);
   const menuRef = useRef(null);
 
-  const navSections = ["#hero", "#about", "#services", "#team"];
-  const allSections = [...navSections, "#contact"];
+  // Only do scroll spy on home page
+  const isHomePage = pathname === "/" || pathname === "";
+
+  const navSections = ["#hero", "#about", "#services", "#team", "#contact"];
+  const allSections = [...navSections];
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150; 
 
-      let current = "#hero";
+    if (!isHomePage) {
+      setActive("/contact-us");
+      return;
+    }
 
-      for (const id of allSections) {
-        const element = document.querySelector(id);
-        if (!element) continue;
+const handleScroll = () => {
+  const scrollPosition = window.scrollY + 120;
+  let current = null;
 
-        const top = element.offsetTop;
-        const height = element.offsetHeight;
+  for (const id of allSections) {
+    const element = document.querySelector(id);
+    if (!element) continue;
 
-        if (top <= scrollPosition && top + height > scrollPosition) {
-          current = id;
-          break;
-        }
-      }
+    const top = element.offsetTop;
+    const height = element.offsetHeight;
 
-      setActive(current);
-    };
+    if (scrollPosition >= top && scrollPosition < top + height) {
+      current = id;
+      break;
+    }
+  }
 
+  setActive(current);
+};
+
+
+    // Run once + listen
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePage]);
 
-  // Close menu on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (open && menuRef.current && !menuRef.current.contains(event.target)) {
@@ -53,13 +65,26 @@ export default function Header() {
   }, [open]);
 
   const navLink = (href, label, isMobile = false) => {
-    const isActive = active === href;
 
-    // Full URL for proper navigation from other pages
-    const linkHref = href === "#hero" ? "/" : `/#${href.replace("#", "")}`;
+    let isActive = false;
+
+    if (isHomePage) {
+      isActive = active === href;
+    } else {
+      isActive = href === "/contact-us";
+    }
+
+    const linkHref =
+      href.startsWith("#") && isHomePage
+        ? href
+        : href === "#hero"
+          ? "/"
+          : href.startsWith("#")
+            ? `/#${href.replace("#", "")}`
+            : href;
 
     const underlineClass = isMobile
-      ? "" // no underline on mobile
+      ? ""
       : `after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full
          after:bg-[#ff7a00] after:origin-left after:transition-transform after:duration-300
          ${isActive ? "after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"}`;
@@ -76,7 +101,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md py-4">
+    <header className="fixed top-0 left-0 w-full z-50 py-3 bg-white md:bg-transparent md:backdrop-blur-md ">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
@@ -91,15 +116,16 @@ export default function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 bg-white px-8 py-2 rounded-full shadow-sm border border-gray-200">
+        <nav className="hidden md:flex items-center gap-8 bg-white px-8 py-2 rounded-full">
           {navLink("#hero", "Home")}
           {navLink("#about", "About")}
           {navLink("#services", "Services")}
           {navLink("#team", "Our Team")}
+          {navLink("/contact-us", "Contact Us")}
         </nav>
 
         {/* Mobile Button */}
-        <button className="md:hidden text-gray-700" onClick={() => setOpen(!open)}>
+        <button className="md:hidden text-gray-400" onClick={() => setOpen(!open)}>
           {open ? <HiOutlineX size={28} /> : <HiOutlineMenu size={28} />}
         </button>
       </div>
@@ -107,16 +133,19 @@ export default function Header() {
       {/* Mobile Menu */}
       <div
         ref={menuRef}
-        className={`md:hidden w-full bg-white shadow-lg transition-all duration-300 overflow-hidden
-          ${open ? "max-h-[500px] opacity-100 py-8" : "max-h-0 opacity-0 py-0"}`}
+        className={`md:hidden w-full bg-white
+                transition-all duration-300 overflow-hidden text-gray-700
+                ${open ? "max-h-[500px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"}`}
       >
+
         <div className="px-6 flex flex-col items-center gap-8 text-lg font-medium text-center">
           {navLink("#hero", "Home", true)}
           {navLink("#about", "About", true)}
           {navLink("#services", "Services", true)}
           {navLink("#team", "Our Team", true)}
+          {navLink("/contact-us", "Contact Us", true)}
 
-          {/* Contact info at bottom */}
+          {/* Contact info */}
           <div className="mt-6 pt-6 border-t border-gray-200 w-full text-center text-base text-gray-600 space-y-3">
             <div className="flex items-center justify-center gap-3">
               <svg className="w-5 h-5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
